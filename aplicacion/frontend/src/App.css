@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+.datosJugador{
+  /*alinear todo en columnas*/
+  display: flex;
+  flex-direction: column;
+  /*menos ancho*/
+  width: 50%;
+  /*centrar*/
+  margin: auto;
+  border: 3px solid green;
+  padding: 10px;
+}
+.datos{
+  /*cursiva*/
+  font-style: italic;
+  /*negrita*/
+  font-weight: bold;
+  padding: 15px;
+}
+button{
+  margin-top: 20px;
+  width: 200px;
+  height: 30px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
