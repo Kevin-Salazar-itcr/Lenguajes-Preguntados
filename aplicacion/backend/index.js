@@ -14,6 +14,7 @@ const db = mysql.createConnection({
     database: 'preguntados'
 });
 
+//insertar un usuario en la base de datos
 app.post("/create", (req, res) => {
     const nombre = req.body.nombre;
     const apellido = req.body.apellido;
@@ -35,9 +36,22 @@ app.listen(3001, () => {
     console.log("Servidor iniciado en el puerto 3001");
 });
 
-app.get("/usuario", (req, res) => {
+app.get("/historial", (req, res) => {
     db.query(
-        "SELECT * FROM usuario",
+        "SELECT * FROM historial",
+        (err, result) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.send(result);
+            }
+        }
+    );
+});
+
+app.get("/preguntas", (req, res) => {
+    db.query(
+        "SELECT * FROM preguntas",
         (err, result) => {
             if (err) {
                 console.log(err);

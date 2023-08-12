@@ -19,13 +19,34 @@
   font-weight: bold;
   padding: 15px;
 }
-button{
+.boton{
   margin-top: 20px;
   width: 200px;
   height: 30px;
-  background-color: #4CAF50;
+  background-color: #005d92;
   color: white;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.op1, .op2, .op3{
+  margin-top: 20px;
+  width: 200px;
+  height: 30px;
+  background-color: #005d92;
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.historial {
+  display: none;
+}
+.juego{
+  display: none;
+}
+.preguntas{
+  display: none;
 }
