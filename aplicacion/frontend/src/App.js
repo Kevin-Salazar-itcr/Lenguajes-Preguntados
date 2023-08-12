@@ -2,31 +2,40 @@ import './App.css';
 import { useState } from 'react';
 import Axios from 'axios';
 
-
 function App() {
 
-  //variables que gestionan valores de los inputs
+  //variables que gestionan valores para el historial
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
+  const nombreCompleto = nombre + " " + apellido;
+  let puntos = 0;
+  let respuestas = [];
 
   //variables que gestionan los datos de la base de datos
   const [historialList, setHistorial] = useState([]);
   const [preguntasList, setPreguntas] = useState([]);
   let preguntas = [];
-  let respuestas = [];
-  let puntaje = 0;
   
-  // //funcion que agrega un usuario a la base de datos
-  // const add = () => {
-  //   Axios.post("http://localhost:3001/create", {
-  //     nombre: nombre,
-  //     apellido: apellido,
-  //     }).then(() => {
-  //       console.log("usuario agregado");
-  //     });
-  //     document.querySelector(".inicio").style.display = "none";
-  //     document.querySelector(".juego").style.display = "block";
-  // }
+  
+  //funcion que agrega el historial a la base de datos
+  const add = () => {
+    Axios.post("http://localhost:3001/create", {
+      nombreCompleto: nombreCompleto,
+      puntos: puntos,
+      res1: respuestas[0],
+      res2: respuestas[1],
+      res3: respuestas[2],
+      res4: respuestas[3],
+      res5: respuestas[4],
+      res6: respuestas[5],
+      res7: respuestas[6],
+      res8: respuestas[7],
+      res9: respuestas[8],
+      res10: respuestas[9],
+      }).then(() => {
+        console.log("historial guardado");
+      });
+  }
 
   //funcion que inicializa el juego
   const init = () => {
@@ -37,8 +46,6 @@ function App() {
     document.querySelector(".inicio").style.display = "none";
     document.querySelector(".juego").style.display = "block";
   }
-
-  let i = 0;
     
   const empezar = () => {
     document.querySelector(".empezar").style.display = "none";
@@ -49,11 +56,19 @@ function App() {
     document.querySelector(".op3").innerHTML = preguntas[i][3];
   }
 
+  /**
+   * funcion que detecta el boton presionado y valida si la respuesta es correcta o no
+   * @param {*} event el evento que se genera al presionar un boton
+   */
+  let i = 0;
   async function validar (event) {
     try{
-      //respuesta correcta: suma 1 al puntaje y cambia el color del boton a verde
+      //guardar respuesta en el array de respuestas
+      respuestas[i] = event.target.innerHTML;
+    
+      //respuesta correcta: suma 1 punto y cambia el color del boton a verde
       if(preguntas[i][4] === event.target.innerHTML){
-        puntaje++;
+        puntos++;
         event.target.style.backgroundColor = "#4CAF50";
         await new Promise((resolve) => setTimeout(resolve, 2000));
       }else{
@@ -79,11 +94,11 @@ function App() {
       document.querySelector(".op3").innerHTML = preguntas[i][3];
     }catch(error){
       console.log(error);
-      document.querySelector(".preguntas").innerHTML = "Fin del juego, puntuacion: "+puntaje;
+      document.querySelector(".preguntas").innerHTML = "Fin del juego, puntuacion: "+puntos;
+      add();
     }
   }    
   
-
   //funcion que muestra el historial de la base de datos
   const getHistorial = () => {
     Axios.get("http://localhost:3001/historial").then((response) => {
