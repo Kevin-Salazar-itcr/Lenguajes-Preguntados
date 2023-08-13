@@ -4,7 +4,6 @@ use preguntados;
 -- tuve problemas con la autenticacion de mysql, asi que actualice el super usuario
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 flush privileges;
--- DATE_FORMAT(NOW(), '%d-%m-%Y %l:%i:%s %p') ESTO ES PARA AGREGAR FECHA COMO VARCHAR (50)
 -- --------------------------------------------------------------------------------------------------------
 -- --------------------------------------------------------------------------------------------------------
 create table preguntas(

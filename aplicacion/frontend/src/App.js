@@ -94,8 +94,10 @@ function App() {
       document.querySelector(".op3").innerHTML = preguntas[i][3];
     }catch(error){
       console.log(error);
-      document.querySelector(".preguntas").innerHTML = "Fin del juego, puntuacion: "+puntos;
       add();
+      document.querySelector(".final").style.display = "block";
+      document.querySelector(".preguntas").style.display = "none";
+      document.querySelector(".finalPuntos").innerHTML = "Puntaje obtenido: " + puntos;
     }
   }    
   
@@ -113,11 +115,21 @@ function App() {
     document.querySelector(".historial").style.display = "none";
   }
 
+  const volver2 = () => {
+    //bloquear todos los divs excepto el de inicio
+    document.querySelector(".inicio").style.display = "block";
+    document.querySelector(".juego").style.display = "none";
+    document.querySelector(".empezar").style.display = "block";
+    document.querySelector(".preguntas").style.display = "none";
+    document.querySelector(".final").style.display = "none";
+  }
+
   return (
     <div className="App">
       <div className = "inicio">
         <h1>Bienvenido al juego de preguntados</h1>
         <div className="datosJugador">
+          <h3>¿Cómo te llamas?</h3>
           <label className="datos">Nombre: <input onChange={(event)=>{
             setNombre(event.target.value);
           }} type="text" placeholder="Ingrese su nombre" />
@@ -128,18 +140,38 @@ function App() {
           }} type="text" placeholder="Ingrese su apellido" /></label>
         </div>  
         <button className='boton' onClick={init}>Iniciar juego</button><br />
-        <button className = "mostrarUsuarios boton" onClick={getHistorial}>Mostrar historial</button>
+        <button className = "boton" onClick={getHistorial}>Mostrar historial</button>
       </div>
       
       <div className="historial">
         <h1>Historial de jugadores</h1>
-        <button className = "volver" onClick={volver}>Volver a inicio</button>
+        <button className = "boton" onClick={volver}>Volver a inicio</button>
       { 
           historialList.map((val, key) => {
             return (
               <div className="histUsuario">
-                <h3>Nombre: {val.nombreCompleto} {val.fecha}</h3>
-                <hr />
+                <div className='jugador'>
+                  <h4>Nombre: {val.nombreCompleto}</h4><br />
+                  <h4>Fecha de juego:{val.fecha}</h4><br />
+                  <h4>Puntuación: {val.puntos}</h4>  
+                </div>
+                <div className='respuestas'>
+                  <div className='_1_al_5'>
+                    <h4>1: {val.res1}</h4>
+                    <h4>2: {val.res2}</h4>
+                    <h4>3: {val.res3}</h4>
+                    <h4>4: {val.res4}</h4>
+                    <h4>5: {val.res5}</h4>
+                  </div>
+                  <div className='_6_al_10'>
+                    <h4>6: {val.res6}</h4>
+                    <h4>7: {val.res7}</h4>
+                    <h4>8: {val.res8}</h4>
+                    <h4>9: {val.res9}</h4>
+                    <h4>10: {val.res10}</h4>
+                  </div>
+                  
+                </div>
               </div>
             )
           })
@@ -162,6 +194,16 @@ function App() {
           <button className = "op1" onClick = {validar}></button><br />
           <button className = "op2" onClick = {validar}></button><br />
           <button className = "op3" onClick = {validar}></button><br />
+          <div className='imagen'>
+            aqui ira una imagen<br />
+            aqui ira una descripcion de la respuesta correcta
+          </div>
+        </div>
+
+        <div className='final'>
+          <h1>Fin del juego</h1>
+          <h2 className = "finalPuntos"></h2>
+          <button className="boton" onClick={volver2}>Volver al inicio</button>
         </div>
       </div>
     </div>

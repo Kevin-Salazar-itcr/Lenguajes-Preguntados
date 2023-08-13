@@ -50,3 +50,32 @@
 .preguntas{
   display: none;
 }
+.final{
+  display: none;
+}
+
+.histUsuario, .respuestas {
+  /*colocar lo que haya dentro por columnas*/
+  display: flex;
+  flex-direction: row;
+  
+  /*centrar*/
+  align-items: center;
+  justify-content: center;
+}
+
+.histUsuario{
+  border-bottom: 3px solid green;
+}
+
+._1_al_5, ._6_al_10, .jugador{
+  /*todo alineado a la izquierda*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 30px;
+}
+
+.final {
+  display: none;
+}
