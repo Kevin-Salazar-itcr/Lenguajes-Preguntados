@@ -17,7 +17,9 @@ function App() {
   let preguntas = [];
   
   
-  //funcion que agrega el historial a la base de datos
+  /**
+   * funcion que agrega el historial a la base de datos
+   */
   const add = () => {
     Axios.post("http://localhost:3001/create", {
       nombreCompleto: nombreCompleto,
@@ -37,7 +39,9 @@ function App() {
       });
   }
 
-  //funcion que inicializa el juego
+  /**
+   * funcion que carga las preguntas de la base de datos
+   */
   const init = () => {
     //obtener preguntas de la base de datos
     Axios.get("http://localhost:3001/preguntas").then((response) => {
@@ -47,6 +51,9 @@ function App() {
     document.querySelector(".juego").style.display = "block";
   }
     
+  /**
+   * funcion que muestra la pregunta y las opciones
+   */
   const empezar = () => {
     document.querySelector(".empezar").style.display = "none";
     document.querySelector(".preguntas").style.display = "block";
@@ -69,12 +76,14 @@ function App() {
       //respuesta correcta: suma 1 punto y cambia el color del boton a verde
       if(preguntas[i][4] === event.target.innerHTML){
         document.querySelector(".img").setAttribute("src", "/res"+(i+1)+".png");
-        
+        document.querySelector(".dato").innerHTML = preguntas[i][5];
         puntos++;
         event.target.style.backgroundColor = "#4CAF50";
-        await new Promise((resolve) => setTimeout(resolve, 4000));
+        await new Promise((resolve) => setTimeout(resolve, 6000));
       }else{
         //respuesta incorrecta: cambia el color de botones a rojo y el de la respuesta correcta a naranja
+        document.querySelector(".dato").innerHTML = "Nope, fallaste :c";
+        document.querySelector(".img").setAttribute("src", "/fail.jpg");
         for(const element of document.querySelectorAll(".op1, .op2, .op3")){
           if(element.innerHTML === preguntas[i][4]){
             element.style.backgroundColor = "#d9630f";
@@ -82,9 +91,11 @@ function App() {
             element.style.backgroundColor = "red";
           }
         }
-        await new Promise((resolve) => setTimeout(resolve, 4000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
       }
       document.querySelector(".img").setAttribute("src", "/imagen.png");
+      document.querySelector(".dato").innerHTML = "";
+
       //cambiar color de los botones a azul
       for(const element of document.querySelectorAll(".op1, .op2, .op3")){
         element.style.backgroundColor = "#005d92";
@@ -104,7 +115,9 @@ function App() {
     }
   }    
   
-  //funcion que muestra el historial de la base de datos
+  /**
+   * funcion que muestra el historial de la base de datos
+   */
   const getHistorial = () => {
     Axios.get("http://localhost:3001/historial").then((response) => {
         setHistorial(response.data);        
@@ -113,11 +126,17 @@ function App() {
     });
   }
 
+  /**
+   * funcion que vuelve a la pantalla de inicio desde el historial
+   */
   const volver = () => {
     document.querySelector(".inicio").style.display = "block";
     document.querySelector(".historial").style.display = "none";
   }
 
+  /**
+   * funcion que vuelve a la pantalla de inicio al terminar el juego
+   */
   const volver2 = () => {
     //bloquear todos los divs excepto el de inicio
     document.querySelector(".inicio").style.display = "block";
@@ -184,7 +203,7 @@ function App() {
       <div className="juego">
         {
           preguntasList.map((val, keys) => {
-            preguntas.push([val.pregunta, val.op1, val.op2, val.op3, val.respuesta]);
+            preguntas.push([val.pregunta, val.op1, val.op2, val.op3, val.respuesta, val.dato]);
             console.log(preguntas)
             return(null);
           })
@@ -194,6 +213,7 @@ function App() {
           <h3>Jugador: {nombre} {apellido}</h3>
           <button className = "empezar boton" onClick={empezar}>Play time!</button>
         </div>
+        
         <div className="preguntas">
           <h3 className='preg'>a</h3>
           <button className = "op1" onClick = {validar}></button><br />
@@ -202,13 +222,13 @@ function App() {
           <br/>
           <div className='imagen'>
             <img className = "img" src="/imagen.png" alt="imagen"/><br />
-            aqui ira una descripcion de la respuesta correcta
+            <p className='dato'></p>
           </div>
         </div>
 
         <div className='final'>
           <h1>Fin del juego</h1>
-          <h2 className = "finalPuntos"></h2>
+          <h2 className = "finalPuntos"> </h2>
           <button className="boton" onClick={volver2}>Volver al inicio</button>
         </div>
       </div>

@@ -83,4 +83,21 @@
 img {
   width: 300px;
   height: 300px;
+  /*redondear*/
+  border-radius: 10%;
+}
+
+.dato {
+  /*formato de texto, fuente comic sans tamaño 15*/
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 15px;
+  /*reducir ancho*/
+  width: 50%;
+  /*centrar*/
+  margin: auto;
+}
+
+h1, h2, h3, h4, label {
+  /*formato de texto, fuente comic sans tamaño 15*/
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
