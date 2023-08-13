@@ -12,7 +12,8 @@ create table preguntas(
     op1 varchar(50),
     op2 varchar(50),
     op3 varchar(50),
-    respuesta varchar(50)
+    respuesta varchar(50),
+    dato varchar(500)
 );
 -- --------------------------------------------------------------------------------------------------------
 -- --------------------------------------------------------------------------------------------------------
@@ -37,15 +38,15 @@ ALTER TABLE historial AUTO_INCREMENT = 1;
 -- --------------------------------------------------------------------------------------------------------
 -- --------------------------------------------------------------------------------------------------------
 -- insercion de las 10 preguntas
-INSERT INTO preguntas (pregunta, op1, op2, op3, respuesta) VALUES
-('¿Cuál es la capital de Francia?', 'Londres', 'París', 'Roma', 'París'),
-('¿Cuál es el río más largo del mundo?', 'Nilo', 'Amazonas', 'Yangtsé', 'Nilo'),
-('¿Cuál es el animal nacional de los Estados Unidos?', 'Oso grizzly', 'Bisonte', 'Águila calva', 'Águila calva'),
-('¿Cuál es la montaña más alta del mundo?', 'Everest', 'K2', 'Kangchenjunga', 'Everest'),
-('¿Cuál es el país más poblado del mundo?', 'India', 'China', 'Estados Unidos', 'China'),
-('¿Cuál es el idioma más hablado del mundo?', 'Español', 'Inglés', 'Mandarín', 'Mandarín'),
-('¿Cuál es la moneda más utilizada del mundo?', 'Euro', 'Dólar estadounidense', 'Yen japonés', 'Dólar estadounidense'),
-('¿Cuál es el continente más grande del mundo?', 'Antártida', 'Asia', 'África', 'Asia'),
-('¿Cuál es el océano más grande del mundo?', 'Océano Pacífico', 'Océano Índico', 'Océano Atlántico', 'Océano Pacífico'),
-('¿Cuál es el clima más común del mundo?', 'Tropical', 'Polar', 'Templado', 'Templado');
+INSERT INTO preguntas (pregunta, op1, op2, op3, respuesta, dato) VALUES
+('¿Cuál es la capital de Francia?', 'Londres', 'París', 'Roma', 'París', '¿Sabías que la Torre Eiffel fue construida para la Exposición Universal de 1889? Se suponía que sería una estructura temporal, pero se mantuvo.'),
+('¿Cuál es el río más largo del mundo?', 'Nilo', 'Amazonas', 'Yangtsé', 'Nilo', '¿Sabías que el río Nilo es el río más largo del mundo? Se extiende por más de 6,600 kilómetros y atraviesa 11 países.'),
+('¿Cuál es el animal nacional de los Estados Unidos?', 'Oso grizzly', 'Bisonte', 'Águila calva', 'Águila calva', '¿Sabías que el águila calva es el único ave rapaz que aparece en el sello nacional de Estados Unidos? Está representada con una flecha y una rama de olivo en sus garras, que simbolizan la fuerza y la paz.'),
+('¿Cuál es la montaña más alta del mundo?', 'Everest', 'K2', 'Kangchenjunga', 'Everest', '¿Sabías que el Monte Everest está creciendo a un ritmo de aproximadamente 4 milímetros por año? Esto se debe a que la placa tectónica de la India está chocando con la placa tectónica de Eurasia.'),
+('¿Cuál es el país más poblado del mundo?', 'India', 'China', 'Estados Unidos', 'China', '¿Sabías que China tiene la población más grande del mundo? Con más de 1.400 millones de habitantes, representa más del 18% de la población mundial.'),
+('¿Cuál es el idioma más hablado del mundo?', 'Español', 'Inglés', 'Mandarín', 'Mandarín', '¿Sabías que el mandarín es el idioma más hablado del mundo? Lo hablan más de 1.100 millones de personas, principalmente en China, Taiwán, Singapur y Malasia.'),
+('¿Cuál es la moneda más utilizada del mundo?', 'Euro', 'Dólar estadounidense', 'Yen japonés', 'Dólar estadounidense', '¿Sabías que el dólar estadounidense es la moneda más utilizada en el mundo? Se utiliza en más de 100 países y representa más del 60% de las transacciones comerciales mundiales.'),
+('¿Cuál es el continente más grande del mundo?', 'Antártida', 'Asia', 'África', 'Asia', '¿Sabías que Asia es el hogar de la mayoría de las religiones del mundo, incluyendo el budismo, el hinduismo, el islam, el judaísmo y el cristianismo?'),
+('¿Cuál es el océano más grande del mundo?', 'Océano Pacífico', 'Océano Índico', 'Océano Atlántico', 'Océano Pacífico', '¿Sabías que el Océano Pacífico es el hogar de más de 25,000 islas, más que cualquier otro océano del mundo?'),
+('¿Cuál es el clima más común del mundo?', 'Tropical', 'Polar', 'Templado', 'Templado', '¿Sabías que el clima templado es el clima ideal para el crecimiento de una variedad de plantas y árboles, como árboles de hoja caduca, pinos, abetos y robles? Esto se debe a que las temperaturas son suaves y las precipitaciones son regulares.');
 -- -------------------------------------------------------------------------------

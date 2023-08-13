@@ -68,9 +68,11 @@ function App() {
     
       //respuesta correcta: suma 1 punto y cambia el color del boton a verde
       if(preguntas[i][4] === event.target.innerHTML){
+        document.querySelector(".img").setAttribute("src", "/res"+(i+1)+".png");
+        
         puntos++;
         event.target.style.backgroundColor = "#4CAF50";
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 4000));
       }else{
         //respuesta incorrecta: cambia el color de botones a rojo y el de la respuesta correcta a naranja
         for(const element of document.querySelectorAll(".op1, .op2, .op3")){
@@ -80,8 +82,9 @@ function App() {
             element.style.backgroundColor = "red";
           }
         }
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 4000));
       }
+      document.querySelector(".img").setAttribute("src", "/imagen.png");
       //cambiar color de los botones a azul
       for(const element of document.querySelectorAll(".op1, .op2, .op3")){
         element.style.backgroundColor = "#005d92";
@@ -179,8 +182,6 @@ function App() {
       </div>
 
       <div className="juego">
-        <h1>¡Hora de jugar PREGUNTADOS!</h1>
-        <h3>Jugador: {nombre} {apellido}</h3>
         {
           preguntasList.map((val, keys) => {
             preguntas.push([val.pregunta, val.op1, val.op2, val.op3, val.respuesta]);
@@ -188,14 +189,19 @@ function App() {
             return(null);
           })
         }
-        <button className = "empezar boton" onClick={empezar}>Play time!</button>
+        <div className="empezar">
+          <h1>¡Hora de jugar PREGUNTADOS!</h1>
+          <h3>Jugador: {nombre} {apellido}</h3>
+          <button className = "empezar boton" onClick={empezar}>Play time!</button>
+        </div>
         <div className="preguntas">
           <h3 className='preg'>a</h3>
           <button className = "op1" onClick = {validar}></button><br />
           <button className = "op2" onClick = {validar}></button><br />
           <button className = "op3" onClick = {validar}></button><br />
+          <br/>
           <div className='imagen'>
-            aqui ira una imagen<br />
+            <img className = "img" src="/imagen.png" alt="imagen"/><br />
             aqui ira una descripcion de la respuesta correcta
           </div>
         </div>
