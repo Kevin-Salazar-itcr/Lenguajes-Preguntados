@@ -6,10 +6,14 @@
   display: flex;
   flex-direction: column;
   /*menos ancho*/
-  width: 50%;
+  width: 37%;
   /*centrar*/
   margin: auto;
-  border: 3px solid green;
+  border-left: 10px solid #008B8B;
+  border-right: 10px solid #008B8B;
+  border-bottom: 3px solid #008B8B;
+  border-top: 3px solid #008B8B;
+  border-radius: 20px;
   padding: 10px;
 }
 .datos{
@@ -23,8 +27,9 @@
   margin-top: 20px;
   width: 200px;
   height: 30px;
-  background-color: #005d92;
-  color: white;
+  background-color: #62d7eb;
+  color: black;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
@@ -95,6 +100,7 @@ img {
   width: 50%;
   /*centrar*/
   margin: auto;
+  color: white;
 }
 
 h1, h2, h3, h4, label {

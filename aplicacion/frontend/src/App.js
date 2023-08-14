@@ -57,7 +57,7 @@ function App() {
   const empezar = () => {
     document.querySelector(".empezar").style.display = "none";
     document.querySelector(".preguntas").style.display = "block";
-    document.querySelector(".preg").innerHTML = preguntas[i][0];
+    document.querySelector(".preg").innerHTML = (i+1)+": "+preguntas[i][0];
     document.querySelector(".op1").innerHTML = preguntas[i][1];
     document.querySelector(".op2").innerHTML = preguntas[i][2];
     document.querySelector(".op3").innerHTML = preguntas[i][3];
@@ -102,7 +102,7 @@ function App() {
       }  
       
       i++;
-      document.querySelector(".preg").innerHTML = preguntas[i][0];
+      document.querySelector(".preg").innerHTML = (i+1)+": "+preguntas[i][0];
       document.querySelector(".op1").innerHTML = preguntas[i][1];
       document.querySelector(".op2").innerHTML = preguntas[i][2];
       document.querySelector(".op3").innerHTML = preguntas[i][3];
@@ -111,7 +111,12 @@ function App() {
       add();
       document.querySelector(".final").style.display = "block";
       document.querySelector(".preguntas").style.display = "none";
-      document.querySelector(".finalPuntos").innerHTML = "Puntaje obtenido: " + puntos;
+      if(puntos<6){
+        document.querySelector(".finalPuntos").innerHTML = "Puntaje obtenido: " + puntos+"<br />Sigue intentando, puedes hacerlo mejor";
+      }
+      else{
+        document.querySelector(".finalPuntos").innerHTML = "Puntaje obtenido: " + puntos+"<br />¡Felicidades, has ganado!";
+      }
     }
   }    
   
